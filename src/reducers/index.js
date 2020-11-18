@@ -1,14 +1,28 @@
 const initialState = {};
 
 export default function cartReducer(state = initialState, action) {
-  console.log(action);
+  const ids = Object.keys(state);
+
   switch (action.type) {
     case "ADD_ITEM":
+      let quantity = 0;
+      ids.includes(action.item.id)
+        ? (quantity = state[action.item.id].quantity + 1)
+        : quantity++;
       return {
         ...state,
         [action.item.id]: {
           ...action.item,
-          quantity: 1,
+          quantity: quantity,
+        },
+      };
+
+    case "UPDATE_QUANTITY":
+      return {
+        ...state,
+        [action.item.id]: {
+          ...action.item,
+          quantity: action.item.quantity,
         },
       };
 

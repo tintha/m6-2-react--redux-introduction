@@ -3,10 +3,18 @@ import styled from "styled-components";
 import { Icon } from "react-icons-kit";
 import { deleteOutline } from "react-icons-kit/typicons/deleteOutline";
 import { useDispatch } from "react-redux";
-import { removeItem } from "../actions";
+import { removeItem, updateQuantity } from "../actions";
 
-const CartItem = ({ id, title, price }) => {
+const CartItem = ({ id, title, price, quantity }) => {
   const dispatch = useDispatch();
+
+  const handleChangeQuantity = (e) => {
+    !isNaN(e.target.value) &&
+      dispatch(
+        updateQuantity({ id, title, price, quantity: Number(e.target.value) })
+      );
+  };
+
   return (
     <Wrapper>
       <ItemNameContainer>
@@ -16,7 +24,14 @@ const CartItem = ({ id, title, price }) => {
         </RemoveBtn>
       </ItemNameContainer>
       <QuantityContainer>
-        Quantity:<QuantityNum>1</QuantityNum>
+        <label htmlFor="quantity">Quantity:</label>
+        <QuantityNum
+          name="quantity"
+          id="quantity"
+          type="text"
+          value={quantity}
+          onChange={(e) => handleChangeQuantity(e)}
+        />
       </QuantityContainer>
     </Wrapper>
   );
@@ -40,7 +55,7 @@ const QuantityContainer = styled.div`
   font-size: 1rem;
 `;
 
-const QuantityNum = styled.div`
+const QuantityNum = styled.input`
   background-color: white;
   color: rgba(0, 0, 0);
   min-width: 1.5em;
