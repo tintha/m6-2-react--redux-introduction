@@ -22,7 +22,9 @@ const Cart = () => {
     <Wrapper>
       <TopContainer>
         <Title>Your Cart</Title>
-        <NumItems>{totalItems} item</NumItems>
+        <NumItems>
+          {totalItems} {totalItems <= 1 ? "item" : "items"}
+        </NumItems>
         {storeItems.map((item) => {
           return (
             <CartItem
