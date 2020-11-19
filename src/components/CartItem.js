@@ -39,6 +39,7 @@ const CartItem = ({ id, title, price, quantity }) => {
 
 const Wrapper = styled.div`
   border: 1px solid gray;
+  margin-bottom: 20px;
 `;
 
 const ItemNameContainer = styled.div`
@@ -59,6 +60,7 @@ const QuantityNum = styled.input`
   background-color: white;
   color: rgba(0, 0, 0);
   min-width: 1.5em;
+  max-width: 3em;
   text-align: center;
   font-weight: bold;
   margin-left: 5px;

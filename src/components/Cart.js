@@ -53,6 +53,7 @@ const Wrapper = styled.div`
   flex-direction: column;
   justify-content: space-between;
   height: 100vh;
+  max-width: 300px;
 `;
 
 const TopContainer = styled.div``;

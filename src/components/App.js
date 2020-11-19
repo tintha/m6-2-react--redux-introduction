@@ -47,7 +47,7 @@ const CartWrapper = styled.div`
   height: 100%;
   color: white;
   background-color: rgb(64, 31, 67);
-  min-width: 300px;
+  min-width: 200px;
 `;
 
 export default App;
