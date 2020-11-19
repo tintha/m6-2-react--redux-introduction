@@ -8,15 +8,15 @@ import { getStoreItemArray } from "../reducers";
 const Cart = () => {
   const storeItems = useSelector(getStoreItemArray);
 
-  let totalItems = storeItems.reduce((acc, cur) => {
-    acc += cur.quantity;
-    return acc;
-  }, 0);
-
-  let totalPrice = storeItems.reduce((acc, cur) => {
-    acc += (cur.price * cur.quantity) / 100;
-    return acc;
-  }, 0);
+  let { totalItems, totalPrice } = storeItems.reduce(
+    (acc, cur) => {
+      const { quantity, price } = cur;
+      acc.totalItems += quantity;
+      acc.totalPrice += (price * quantity) / 100;
+      return acc;
+    },
+    { totalItems: 0, totalPrice: 0 }
+  );
 
   return (
     <Wrapper>
